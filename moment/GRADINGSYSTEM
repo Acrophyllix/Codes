@@ -1,11 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PRELIM</title>
+  
 </head>
 <body>
+
+    <h1> Prelim</h1>
     
-</body>
-</html>
+    <!-- FOR QUIZ   -->
+    
+    <div>
+        <label for="Quiz1">Enter Quiz 1:</label>
+        <input type="number" id="Quiz1" name="Quiz1" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="Quiz2">Enter Quiz 2:</label>
+        <input type="number" id="Quiz2" name="Quiz2" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="Quiz3">Enter Quiz 3:</label>
+        <input type="number" id="Quiz3" name="Quiz3" min="0" max="100">
+    </div>
+
+
+    <!-- FOR LAB ACT    -->
+    
+    <div>
+        <label for="Lab1">Enter Laboratory Activity 1:</label>
+        <input type="number" id="Lab1" name="Lab1" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="Lab2">Enter Laboratory Activity 2:</label>
+        <input type="number" id="Lab2" name="Lab2" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="Lab3">Enter Laboratory Activity 3:</label>
+        <input type="number" id="Lab3" name="Lab3" min="0" max="100">
+    </div>
+
+
+    <!-- FOR ASSIGNMENT    -->
+    
+    <div>
+        <label for="Assign1">Enter Assignment 1:</label>
+        <input type="number" id="Assign1" name="Assign1" min="0" max="100">
+    </div>
+
+    <div>
+        <label for="Assign2">Enter Assignment 2:</label>
+        <input type="number" id="Assign2" name="Assign2" min="0" max="100">
+    </div>
+
+    <!-- FOR PRELIM -->
+
+    <div>
+        <label for="Prelim">Enter Prelim Exam:</label>
+        <input type="number" id="Prelim" name="Prelim" min="0" max="100">
+    </div>
+
+    <!-- LINE BREAK RAAAAAAAHHHHHHH-->
+    <br><br>
+
+    <button onclick="calculateGrade()">Compute</button>
+
+    <div>
+        <h3> Your Prelim grade is:</h3>
+        <input type="number" id="result" readonly>
+    </div>
+
+    <script>
+        function calculateGrade() {
+            
+
+        }
+    </script>
+
+    
+
+
