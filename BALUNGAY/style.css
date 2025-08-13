@@ -12,7 +12,7 @@ body
 
 .calc
 {
-  background-color: #50ac54;
+  color: #FFB54D;
 }
 
 #calculator 
@@ -26,7 +26,7 @@ body
 
 .clear
 {
-  background-color: red;
+  color: #FFB54D;
 }
 
 #display
@@ -39,7 +39,7 @@ body
   text-align: right;
   border: none;
   border-radius: 10px;
-  background-color: hsl(0, 0%, 20%);
+  background-color: #2f2f2f;
   color: white;
   box-sizing: border-box;
 }
@@ -58,7 +58,7 @@ button
   padding: 20px;
   border-radius: 10px;
   border: none;
-  background-color: hsl(0, 0%, 30%);
+  background-color: #2f2f2f;
   color: white;
   font-size: 20px;
   cursor: pointer;
@@ -66,20 +66,20 @@ button
 
 button:hover
 {
-  background-color: hsl(0, 0%, 40%);
+  background-color: grey;
 }
 
 button:active
 {
-  background-color: hsl(0, 0%, 50%);
+  background-color: grey;
 }
 
 .op
 {
-  background-color: hsl(35, 100%, 55%);
+  background-color: #FFB54D;
 }
 
 .op:hover
 {
-  background-color: hsl(35, 100%, 65%);
+  background-color: #FFB54D;
 }
