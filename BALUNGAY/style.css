@@ -12,7 +12,12 @@ body
 
 .calc
 {
-  color: #FFB54D;
+  background-color: #FFB54D;
+}
+
+.calc:hover
+{
+  background-color: #FFB54D;
 }
 
 #calculator 
@@ -29,10 +34,15 @@ body
   color: #FFB54D;
 }
 
+.del 
+{
+  color: #FFB54D;
+}
+
 #display
 {
   width: 100%;
-  height: 60px;
+  height: 90px;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 24px;
@@ -74,12 +84,3 @@ button:active
   background-color: grey;
 }
 
-.op
-{
-  background-color: #FFB54D;
-}
-
-.op:hover
-{
-  background-color: #FFB54D;
-}
