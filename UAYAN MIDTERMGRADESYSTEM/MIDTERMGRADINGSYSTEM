@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midterm Grade Calculator</title>
+
+    <style>
+        /* General body and container styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eef2f6; /* Light, calming background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        .calculator-container {
+            background-color: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px; /* Adjusted max width for single column */
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+
+        /* Input group styling */
+        .input-section {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .input-group-container {
+            flex-grow: 1;
+            min-width: 300px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .input-group-container h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 0.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            color: #555;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        input[type="number"] {
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            padding: 0.5rem;
+            text-align: left;
+            width: 100%;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        }
+
+        /* Button styling */
+        .button-container {
+            margin-top: 2rem;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+
+        button:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        /* Result section */
+        .result-group {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .result-group h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .result-display {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .result-display input {
+            display: block;
+            margin: 0 auto;
+            width: 150px;
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            background-color: #eff6ff; /* Light blue result background */
+            border: 2px solid #93c5fd;
+            border-radius: 8px;
+            padding: 0.75rem;
+        }
+
+        .midterm-grade-label {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .midterm-grade-result {
+            width: 200px;
+            font-size: 2.5rem;
+            border-color: #2c3e50;
+        }
+
+        /* Error message box styling */
+        .message-box {
+            color: #e74c3c;
+            text-align: center;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .input-section {
+                flex-direction: column;
+            }
+            .calculator-container {
+                padding: 1rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            .subtitle {
+                font-size: 0.9rem;
+            }
+            .input-group-container {
+                min-width: 100%;
+            }
+            .result-display input {
+                width: 100%;
+            }
+            .midterm-grade-result {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1>Midterm Grade Calculator</h1>
+        <p class="subtitle">Calculates your midterm grade based on your midterm scores.</p>
+        
+        <!-- Input section  -->
+        <div class="input-section">
+            <div class="input-group-container">
+                <h2>Midterm Scores</h2>
+                <div class="input-group">
+                    <label for="MidtermQuiz1">Quiz 1:</label>
+                    <input type="number" id="MidtermQuiz1" name="MidtermQuiz1" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermQuiz2">Quiz 2:</label>
+                    <input type="number" id="MidtermQuiz2" name="MidtermQuiz2" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermQuiz3">Quiz 3:</label>
+                    <input type="number" id="MidtermQuiz3" name="MidtermQuiz3" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermLab1">Lab Activity 1:</label>
+                    <input type="number" id="MidtermLab1" name="MidtermLab1" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermLab2">Lab Activity 2:</label>
+                    <input type="number" id="MidtermLab2" name="MidtermLab2" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermLab3">Lab Activity 3:</label>
+                    <input type="number" id="MidtermLab3" name="MidtermLab3" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermAssign1">Assignment 1:</label>
+                    <input type="number" id="MidtermAssign1" name="MidtermAssign1" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermAssign2">Assignment 2:</label>
+                    <input type="number" id="MidtermAssign2" name="MidtermAssign2" min="0" max="100">
+                </div>
+                <div class="input-group">
+                    <label for="MidtermExam">Midterm Exam:</label>
+                    <input type="number" id="MidtermExam" name="MidtermExam" min="0" max="100">
+                </div>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="calculateMidtermGrade()">Compute Midterm Grade</button>
+        </div>
+        
+        <!-- Error/Message Box -->
+        <div id="messageBox" class="message-box"></div>
+
+        <!-- Result section with Midterm Grade display -->
+        <div class="result-group">
+            <h3>Your Midterm Grade</h3>
+            <div class="result-display">
+                <div>
+                    <input type="text" id="MidtermResult" readonly class="midterm-grade-result">
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function calculateMidtermGrade() {
+                const messageBox = document.getElementById('messageBox');
+                messageBox.textContent = ''; // Clear any previous error messages
+
+                // Function to get a number from an input field, returning null if invalid
+                const getNumber = (id) => {
+                    const value = document.getElementById(id).value;
+                    if (value === '' || isNaN(parseFloat(value))) {
+                        return null;
+                    }
+                    return parseFloat(value);
+                };
+
+                // Helper function to calculate Class Standing for a given set of scores
+                const calculateClassStanding = (prefix) => {
+                    const quiz1 = getNumber(prefix + 'Quiz1');
+                    const quiz2 = getNumber(prefix + 'Quiz2');
+                    const quiz3 = getNumber(prefix + 'Quiz3');
+                    const lab1 = getNumber(prefix + 'Lab1');
+                    const lab2 = getNumber(prefix + 'Lab2');
+                    const lab3 = getNumber(prefix + 'Lab3');
+                    const assign1 = getNumber(prefix + 'Assign1');
+                    const assign2 = getNumber(prefix + 'Assign2');
+                    
+                    const inputs = [quiz1, quiz2, quiz3, lab1, lab2, lab3, assign1, assign2];
+                    
+                    // If any input is null, it's invalid
+                    if (inputs.some(val => val === null)) {
+                        return null;
+                    }
+
+                    // Treat empty inputs as 0 for calculation, but still require them to be valid numbers
+                    const quizAverage = (quiz1 + quiz2 + quiz3) / 3;
+                    const labAverage = (lab1 + lab2 + lab3) / 3;
+                    const assignAverage = (assign1 + assign2) / 2;
+
+                    return (0.60 * quizAverage) + (0.20 * assignAverage) + (0.20 * labAverage);
+                };
+
+                // Helper function to calculate a Period Grade (PG or TMG)
+                const calculatePeriodGrade = (cs, examId) => {
+                    const examScore = getNumber(examId);
+                    if (cs === null || examScore === null) {
+                        return null;
+                    }
+                    return (0.50 * cs) + (0.50 * examScore);
+                };
+                
+                // Get all the midterm inputs
+                const midtermCS = calculateClassStanding('Midterm');
+                const midtermExam = getNumber('MidtermExam');
+
+                // Check for invalid inputs from any field
+                const allInputsValid = midtermCS !== null && midtermExam !== null;
+                
+                if (!allInputsValid) {
+                    messageBox.textContent = 'Please ensure all fields contain valid numbers.';
+                    document.getElementById('MidtermResult').value = 'Error';
+                    return;
+                }
+
+                // Calculate the final Midterm Grade based on the Midterm scores
+                const midtermGrade = calculatePeriodGrade(midtermCS, 'MidtermExam');
+                document.getElementById('MidtermResult').value = midtermGrade.toFixed(2);
+            }
+        </script>
+    </div>
+</body>
+</html>
