@@ -75,10 +75,37 @@
 
     <script>
         function calculateGrade() {
-            
+            // Converts input values to the numbers
+            // || 0 ensures if user input is empty, the value defaults to 0
+            const quiz1 = parseFloat(document.getElementById('Quiz1').value) || 0;
+            const quiz2 = parseFloat(document.getElementById('Quiz2').value) || 0;
+            const quiz3 = parseFloat(document.getElementById('Quiz3').value) || 0;
 
+            const lab1 = parseFloat(document.getElementById('Lab1').value) || 0;
+            const lab2 = parseFloat(document.getElementById('Lab2').value) || 0;
+            const lab3 = parseFloat(document.getElementById('Lab3').value) || 0;
+
+            const assign1 = parseFloat(document.getElementById('Assign1').value) || 0;
+            const assign2 = parseFloat(document.getElementById('Assign2').value) || 0;
+
+            const prelimExam = parseFloat(document.getElementById('Prelim').value) || 0;
+
+            // Calculate the Averages
+            const quizAverage = (quiz1 + quiz2 + quiz3) / 3;
+            const labAverage = (lab1 + lab2+ lab3) / 3;
+            const assignAverage = (assign1 + assign2) / 2;
+
+            // Calculate Class Standing (CS)
+            const classStanding = (0.60 * quizAverage) + (0.20 * assignAverage) + (0.20 * labAverage);
+
+            // Calculate Prelim Grade (PG)
+            const prelimGrade = (0.50 * classStanding) + (0.50 * prelimExam);
+
+            // Display all the results in the result field, rounded to two decimal places
         }
     </script>
+</body>
+</html>
 
     
 
