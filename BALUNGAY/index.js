@@ -5,6 +5,7 @@ const display = document.getElementById("display");
 function appendToDisplay(input)
 {
   display.value += input;
+
 }
 
 function clearDisplay()
@@ -22,7 +23,9 @@ function calculate()
 {
   try 
   {
-    display.value = eval(display.value);
+    let input = display.value.replace(/\^/g, '**');
+    input = input.replace(/(\d+(\.\d+)?)%/g, '($1/100)');
+    display.value = eval(input);
   }
   catch(error)
   {
