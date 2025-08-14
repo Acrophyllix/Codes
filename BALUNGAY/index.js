@@ -12,6 +12,12 @@ function clearDisplay()
   display.value = "";
 }
 
+function deleteWords()
+{
+  let string = display.value;
+   display.value = string.substr(0, string.length -1);
+}
+
 function calculate()
 {
   try 
