@@ -1,133 +1,111 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prelim Grade Calculator</title>
-
     <style>
-        /* body and container */
         body {
             font-family: Arial, sans-serif;
-            background-color: #eef2f6; /* background */
+            background: #f8f8f8;
+            margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 1rem;
-            box-sizing: border-box;
+            height: 100vh;
         }
 
-        .calculator-container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 600px;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 0.5rem;
-            font-size: 2.5rem;
-        }
-
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 2rem;
-        }
-
-        /* single container */
-        .input-group-container {
-            flex-grow: 1;
-            min-width: 300px;
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
+        .container {
+            width: 400px;
+            margin: auto;
+            background: #ccc0d1;
+            padding: 20px;
             border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        
-        .input-group-container h2 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #34495e;
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 0.5rem;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
         }
 
         .input-group {
+            margin-bottom: 10px;
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 1rem;
+            align-items: center;
+            justify-content: space-between;
         }
 
         label {
+            font-size: 0.9rem;
             color: #555;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
+            flex: 1;
+            margin-right: 10px;
+            white-space: nowrap;
         }
 
         input[type="number"] {
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            padding: 0.5rem;
-            text-align: left;
-            width: 100%;
+            width: 100px;
+            padding: 6px 8px;
             font-size: 1rem;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            -moz-appearance: textfield; /* Firefox */
         }
 
-        input[type="number"]:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-        }
-
-        /* Button styling, */
-        .button-container {
-            margin-top: 2rem;
+        /* Hide spinners in Chrome, Safari, Edge */
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
         }
 
         button {
-            display: block;
             width: 100%;
-            padding: 1rem;
-            background-color: #3b82f6;
-            color: white;
+            padding: 10px;
+            background: #caacd8;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            color: rgb(245, 245, 245);
+            font-size: 1rem;
+            border-radius: 4px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #2563eb;
-            transform: translateY(-2px);
+            background: #7d63a9;
         }
 
-        /* Result section */
-        .result-group {
+        .result {
+            margin-top: 20px;
             text-align: center;
-            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .message-box {
+            color: rgb(153, 108, 108);
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Additional styles for the prelim-specific result display */
+        .result-group {
+            margin-top: 20px;
+            text-align: center;
             padding-top: 1.5rem;
             border-top: 1px solid #e0e0e0;
         }
-
+        
         .result-group h3 {
             color: #2c3e50;
             margin-bottom: 1rem;
         }
-
+        
         .result-display {
             display: flex;
             flex-direction: column;
@@ -140,7 +118,7 @@
             margin: 0 auto;
             width: 150px;
             text-align: center;
-            font-size: 2rem;
+            font-size: 1.2rem;
             font-weight: bold;
             color: #2c3e50;
             background-color: #eff6ff;
@@ -148,100 +126,50 @@
             border-radius: 8px;
             padding: 0.75rem;
         }
-
-        .prelim-grade-label {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .prelim-grade-result {
-            width: 200px;
-            font-size: 2.5rem;
-            border-color: #2c3e50;
-        }
-
-        /* Error message box styling */
-        .message-box {
-            color: #e74c3c;
-            text-align: center;
-            margin-top: 1rem;
-            font-weight: bold;
-        }
-
-        /* Responsive design for smaller screens */
-        @media (max-width: 768px) {
-            .calculator-container {
-                padding: 1rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
-            .subtitle {
-                font-size: 0.9rem;
-            }
-            .input-group-container {
-                min-width: 100%;
-            }
-            .result-display input {
-                width: 100%;
-            }
-            .prelim-grade-result {
-                width: 100%;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="calculator-container">
-        <h1>Prelim Grade Calculator</h1>
-        <p class="subtitle">Calculates your prelim grade based on your class standing and exam scores.</p>
+    <div class="container">
+        <h2>Prelim Grade Calculator</h2>
         
-        <!-- Combined input section for all prelim scores -->
-        <div class="input-group-container">
-            <h2>Prelim Grade</h2>
-            
-            <div class="input-group">
-                <label for="PrelimQuiz1">Quiz 1:</label>
-                <input type="number" id="PrelimQuiz1" name="PrelimQuiz1" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimQuiz2">Quiz 2:</label>
-                <input type="number" id="PrelimQuiz2" name="PrelimQuiz2" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimQuiz3">Quiz 3:</label>
-                <input type="number" id="PrelimQuiz3" name="PrelimQuiz3" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimLab1">Lab Activity 1:</label>
-                <input type="number" id="PrelimLab1" name="PrelimLab1" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimLab2">Lab Activity 2:</label>
-                <input type="number" id="PrelimLab2" name="PrelimLab2" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimLab3">Lab Activity 3:</label>
-                <input type="number" id="PrelimLab3" name="PrelimLab3" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimAssign1">Assignment 1:</label>
-                <input type="number" id="PrelimAssign1" name="PrelimAssign1" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimAssign2">Assignment 2:</label>
-                <input type="number" id="PrelimAssign2" name="PrelimAssign2" min="0" max="100">
-            </div>
-            <div class="input-group">
-                <label for="PrelimExam">Prelim Exam:</label>
-                <input type="number" id="PrelimExam" name="PrelimExam" min="0" max="100">
-            </div>
+        <div class="input-group">
+            <label for="PrelimQuiz1">Quiz 1:</label>
+            <input type="number" id="PrelimQuiz1" name="PrelimQuiz1" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimQuiz2">Quiz 2:</label>
+            <input type="number" id="PrelimQuiz2" name="PrelimQuiz2" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimQuiz3">Quiz 3:</label>
+            <input type="number" id="PrelimQuiz3" name="PrelimQuiz3" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimLab1">Lab Activity 1:</label>
+            <input type="number" id="PrelimLab1" name="PrelimLab1" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimLab2">Lab Activity 2:</label>
+            <input type="number" id="PrelimLab2" name="PrelimLab2" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimLab3">Lab Activity 3:</label>
+            <input type="number" id="PrelimLab3" name="PrelimLab3" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimAssign1">Assignment 1:</label>
+            <input type="number" id="PrelimAssign1" name="PrelimAssign1" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimAssign2">Assignment 2:</label>
+            <input type="number" id="PrelimAssign2" name="PrelimAssign2" min="0" max="100">
+        </div>
+        <div class="input-group">
+            <label for="PrelimExam">Prelim Exam:</label>
+            <input type="number" id="PrelimExam" name="PrelimExam" min="0" max="100">
         </div>
 
-        <div class="button-container">
-            <button onclick="calculatePrelimGrade()">Compute Prelim Grade</button>
-        </div>
+        <button onclick="calculatePrelimGrade()">Compute Prelim Grade</button>
         
         <!-- Error/Message Box -->
         <div id="messageBox" class="message-box"></div>
