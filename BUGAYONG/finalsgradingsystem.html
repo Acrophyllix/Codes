@@ -1,202 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<title>Final Grade Calculator</title>
-<style>
-    body {
-    font-family: Arial, sans-serif;
-    background: #f8f8f8;
-    margin: 0;
-    padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Final Grade Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    .container {
-    max-width: 400px;
-    margin: auto;
-    background: #ccc0d1;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+      .container {
+        width: 400px;
+        margin: auto;
+        background: #ccc0d1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-    h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
-    }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-    .input-group {
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    }
+      .input-group {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-    label {
-    font-size: 0.9rem;
-    color: #555;
-    flex: 1;
-    margin-right: 10px;
-    white-space: nowrap;
-    }
+      label {
+        font-size: 0.9rem;
+        color: #555;
+        flex: 1;
+        margin-right: 10px;
+        white-space: nowrap;
+      }
 
-    input[type="number"] {
-    width: 100px;
-    padding: 6px 8px;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -moz-appearance: textfield; /* Firefox */
-    }
+      input[type="number"] {
+        width: 100px;
+        padding: 6px 8px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-appearance: textfield; /* Firefox */
+      }
 
-    /* Hide spinners in Chrome, Safari, Edge */
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-    }
+      /* Hide spinners in Chrome, Safari, Edge */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-    button {
-    width: 100%;
-    padding: 10px;
-    background: #caacd8;
-    border: none;
-    color: rgb(245, 245, 245);
-    font-size: 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-    margin-top: 15px;
-    transition: background-color 0.3s ease;
-    }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #caacd8;
+        border: none;
+        color: rgb(245, 245, 245);
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+      }
 
-    button:hover {
-    background: #7d63a9;
-    }
+      button:hover {
+        background: #7d63a9;
+      }
 
-    .result {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #2c3e50;
-    }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+      }
 
-    .message-box {
-    color: rgb(153, 108, 108);
-    text-align: center;
-    font-size: 0.9rem;
-    }
+      .message-box {
+        color: rgb(153, 108, 108);
+        text-align: center;
+        font-size: 0.9rem;
+      }
     </style>
-    </head>
-    <body>
-
+  </head>
+  <body>
     <div class="container">
-    <h2>Final Grade Calculator</h2>
+      <h2>Final Grade Calculator</h2>
 
-    <div class="input-group">
-    <label for="quiz1">Quiz 1</label>
-    <input type="number" id="quiz1" />
-    </div>
+      <div class="input-group">
+        <label for="quiz1">Quiz 1</label>
+        <input type="number" id="quiz1" />
+      </div>
 
-    <div class="input-group">
-    <label for="quiz2">Quiz 2</label>
-    <input type="number" id="quiz2" />
-    </div>
+      <div class="input-group">
+        <label for="quiz2">Quiz 2</label>
+        <input type="number" id="quiz2" />
+      </div>
 
-    <div class="input-group">
-    <label for="quiz3">Quiz 3</label>
-    <input type="number" id="quiz3" />
-    </div>
+      <div class="input-group">
+        <label for="quiz3">Quiz 3</label>
+        <input type="number" id="quiz3" />
+      </div>
 
-    <div class="input-group">
-    <label for="assign1">Assignment 1</label>
-    <input type="number" id="assign1" />
-    </div>
+      <div class="input-group">
+        <label for="assign1">Assignment 1</label>
+        <input type="number" id="assign1" />
+      </div>
 
-    <div class="input-group">
-    <label for="assign2">Assignment 2</label>
-    <input type="number" id="assign2" />
-    </div>
+      <div class="input-group">
+        <label for="assign2">Assignment 2</label>
+        <input type="number" id="assign2" />
+      </div>
 
-    <div class="input-group">
-    <label for="lab1">Lab Activity 1</label>
-    <input type="number" id="lab1" />
-    </div>
+      <div class="input-group">
+        <label for="lab1">Lab Activity 1</label>
+        <input type="number" id="lab1" />
+      </div>
 
-    <div class="input-group">
-    <label for="lab2">Lab Activity 2</label>
-    <input type="number" id="lab2" />
-    </div>
+      <div class="input-group">
+        <label for="lab2">Lab Activity 2</label>
+        <input type="number" id="lab2" />
+      </div>
 
-    <div class="input-group">
-    <label for="lab3">Lab Activity 3</label>
-    <input type="number" id="lab3" />
-    </div>
+      <div class="input-group">
+        <label for="lab3">Lab Activity 3</label>
+        <input type="number" id="lab3" />
+      </div>
 
-    <div class="input-group">
-    <label for="prelimExam">Prelim Exam (PE)</label>
-    <input type="number" id="prelimExam" />
-    </div>
+      <div class="input-group">
+        <label for="prelimExam">Prelim Exam (PE)</label>
+        <input type="number" id="prelimExam" />
+      </div>
 
-    <div class="input-group">
-    <label for="midtermGrade">Midterm Grade (TMG)</label>
-    <input type="number" id="midtermGrade" />
-    </div>
+      <div class="input-group">
+        <label for="midtermGrade">Midterm Grade (TMG)</label>
+        <input type="number" id="midtermGrade" />
+      </div>
 
-    <div class="input-group">
-    <label for="finalExam">Final Exam (TFG)</label>
-    <input type="number" id="finalExam" />
-    </div>
+      <div class="input-group">
+        <label for="finalExam">Final Exam (TFG)</label>
+        <input type="number" id="finalExam" />
+      </div>
 
-    <button onclick="computeFinalGrade()">Compute Final Grade</button>
-    <div class="message-box" id="message"></div>
-    <div class="result" id="result">Final Grade: </div>
+      <button onclick="computeFinalGrade()">Compute Final Grade</button>
+      <div class="message-box" id="message"></div>
+      <div class="result" id="result">Final Grade:</div>
     </div>
 
     <script>
-    function computeFinalGrade() {
-    const getNum = (id) => {
-    const val = document.getElementById(id).value;
-    return val === "" ? null : parseFloat(val);
-    };
+      function computeFinalGrade() {
+        const getNum = (id) => {
+          const val = document.getElementById(id).value;
+          return val === "" ? null : parseFloat(val);
+        };
 
-    const q1 = getNum("quiz1");
-    const q2 = getNum("quiz2");
-    const q3 = getNum("quiz3");
-    const a1 = getNum("assign1");
-    const a2 = getNum("assign2");
-    const l1 = getNum("lab1");
-    const l2 = getNum("lab2");
-    const l3 = getNum("lab3");
-    const PE = getNum("prelimExam");
-    const TMG = getNum("midtermGrade");
-    const TFG = getNum("finalExam");
+        const q1 = getNum("quiz1");
+        const q2 = getNum("quiz2");
+        const q3 = getNum("quiz3");
+        const a1 = getNum("assign1");
+        const a2 = getNum("assign2");
+        const l1 = getNum("lab1");
+        const l2 = getNum("lab2");
+        const l3 = getNum("lab3");
+        const PE = getNum("prelimExam");
+        const TMG = getNum("midtermGrade");
+        const TFG = getNum("finalExam");
 
-    const allInputs = [q1, q2, q3, a1, a2, l1, l2, l3, PE, TMG, TFG];
+        const allInputs = [q1, q2, q3, a1, a2, l1, l2, l3, PE, TMG, TFG];
 
-    const message = document.getElementById("message");
-    const result = document.getElementById("result");
-    message.textContent = "";
+        const message = document.getElementById("message");
+        const result = document.getElementById("result");
+        message.textContent = "";
 
-    if (allInputs.includes(null)) {
-    message.textContent = "Please fill in all fields.";
-    result.textContent = "Final Grade: --";
-    return;
-    }
+        if (allInputs.includes(null)) {
+          message.textContent = "Please fill in all fields.";
+          result.textContent = "Final Grade: --";
+          return;
+        }
 
-    const quizAvg = (q1 + q2 + q3) / 3;
-    const assignAvg = (a1 + a2) / 2;
-    const labAvg = (l1 + l2 + l3) / 3;
+        const quizAvg = (q1 + q2 + q3) / 3;
+        const assignAvg = (a1 + a2) / 2;
+        const labAvg = (l1 + l2 + l3) / 3;
 
-    const CS = 0.6 * quizAvg + 0.2 * assignAvg + 0.2 * labAvg;
-    const PG = 0.5 * CS + 0.5 * PE;
-    const MG = (1/3 * PG) + (2/3 * TMG);
-    const FG = (1/3 * MG) + (2/3 * TFG);
+        const CS = 0.6 * quizAvg + 0.2 * assignAvg + 0.2 * labAvg;
+        const PG = 0.5 * CS + 0.5 * PE;
+        const MG = (1 / 3) * PG + (2 / 3) * TMG;
+        const FG = (1 / 3) * MG + (2 / 3) * TFG;
 
-    result.textContent = `Final Grade: ${FG.toFixed(2)}`;
-    }
+        result.textContent = `Final Grade: ${FG.toFixed(2)}`;
+      }
     </script>
-
-</body>
+  </body>
 </html>
