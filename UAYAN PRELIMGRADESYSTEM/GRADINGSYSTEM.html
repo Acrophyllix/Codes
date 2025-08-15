@@ -1,264 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Prelim Grade Calculator</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f8f8;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-        .container {
-            width: 400px;
-            margin: auto;
-            background: #ccc0d1;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+      .container {
+        width: 400px;
+        margin: auto;
+        background: #ccc0d1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            color: #333;
-        }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-        .input-group {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+      .input-group {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-        label {
-            font-size: 0.9rem;
-            color: #555;
-            flex: 1;
-            margin-right: 10px;
-            white-space: nowrap;
-        }
+      label {
+        font-size: 0.9rem;
+        color: #555;
+        flex: 1;
+        margin-right: 10px;
+        white-space: nowrap;
+      }
 
-        input[type="number"] {
-            width: 100px;
-            padding: 6px 8px;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            -moz-appearance: textfield; /* Firefox */
-        }
+      input[type="number"] {
+        width: 100px;
+        padding: 6px 8px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-appearance: textfield; /* Firefox */
+      }
 
-        /* Hide spinners in Chrome, Safari, Edge */
-        input[type="number"]::-webkit-inner-spin-button,
-        input[type="number"]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+      /* Hide spinners in Chrome, Safari, Edge */
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #caacd8;
-            border: none;
-            color: rgb(245, 245, 245);
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 15px;
-            transition: background-color 0.3s ease;
-        }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #caacd8;
+        border: none;
+        color: rgb(245, 245, 245);
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+      }
 
-        button:hover {
-            background: #7d63a9;
-        }
+      button:hover {
+        background: #7d63a9;
+      }
 
-        .result {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        
-        .message-box {
-            color: rgb(153, 108, 108);
-            text-align: center;
-            font-size: 0.9rem;
-        }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+      }
 
-        /* Additional styles for the prelim-specific result display */
-        .result-group {
-            margin-top: 20px;
-            text-align: center;
-            padding-top: 1.5rem;
-            border-top: 1px solid #e0e0e0;
-        }
-        
-        .result-group h3 {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-        }
-        
-        .result-display {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .result-display input {
-            display: block;
-            margin: 0 auto;
-            width: 150px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #2c3e50;
-            background-color: #eff6ff;
-            border: 2px solid #93c5fd;
-            border-radius: 8px;
-            padding: 0.75rem;
-        }
+      .message-box {
+        color: rgb(153, 108, 108);
+        text-align: center;
+        font-size: 0.9rem;
+      }
+
+      /* Additional styles for the prelim-specific result display */
+      .result-group {
+        margin-top: 20px;
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .result-group h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      .result-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .result-display input {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+        background-color: #eff6ff;
+        border: 2px solid #93c5fd;
+        border-radius: 8px;
+        padding: 0.75rem;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <h2>Prelim Grade Calculator</h2>
-        
-        <div class="input-group">
-            <label for="PrelimQuiz1">Quiz 1:</label>
-            <input type="number" id="PrelimQuiz1" name="PrelimQuiz1" min="0" max="100">
+      <h2>Prelim Grade Calculator</h2>
+
+      <div class="input-group">
+        <label for="PrelimQuiz1">Quiz 1:</label>
+        <input
+          type="number"
+          id="PrelimQuiz1"
+          name="PrelimQuiz1"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimQuiz2">Quiz 2:</label>
+        <input
+          type="number"
+          id="PrelimQuiz2"
+          name="PrelimQuiz2"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimQuiz3">Quiz 3:</label>
+        <input
+          type="number"
+          id="PrelimQuiz3"
+          name="PrelimQuiz3"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimLab1">Lab Activity 1:</label>
+        <input
+          type="number"
+          id="PrelimLab1"
+          name="PrelimLab1"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimLab2">Lab Activity 2:</label>
+        <input
+          type="number"
+          id="PrelimLab2"
+          name="PrelimLab2"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimLab3">Lab Activity 3:</label>
+        <input
+          type="number"
+          id="PrelimLab3"
+          name="PrelimLab3"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimAssign1">Assignment 1:</label>
+        <input
+          type="number"
+          id="PrelimAssign1"
+          name="PrelimAssign1"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimAssign2">Assignment 2:</label>
+        <input
+          type="number"
+          id="PrelimAssign2"
+          name="PrelimAssign2"
+          min="0"
+          max="100"
+        />
+      </div>
+      <div class="input-group">
+        <label for="PrelimExam">Prelim Exam:</label>
+        <input
+          type="number"
+          id="PrelimExam"
+          name="PrelimExam"
+          min="0"
+          max="100"
+        />
+      </div>
+
+      <button onclick="calculatePrelimGrade()">Compute Prelim Grade</button>
+
+      <!-- Error/Message Box -->
+      <div id="messageBox" class="message-box"></div>
+
+      <!-- Result section with both Class Standing and Final Prelim Grade -->
+      <div class="result-group">
+        <h3>Calculated Grades</h3>
+        <div class="result-display">
+          <div>
+            <label for="ClassStandingResult"
+              >Your Class Standing (CS) is:</label
+            >
+            <input type="text" id="ClassStandingResult" readonly />
+          </div>
+          <div>
+            <label for="PrelimResult" class="prelim-grade-label"
+              >Your Final Prelim Grade (PG) is:</label
+            >
+            <input
+              type="text"
+              id="PrelimResult"
+              readonly
+              class="prelim-grade-result"
+            />
+          </div>
         </div>
-        <div class="input-group">
-            <label for="PrelimQuiz2">Quiz 2:</label>
-            <input type="number" id="PrelimQuiz2" name="PrelimQuiz2" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimQuiz3">Quiz 3:</label>
-            <input type="number" id="PrelimQuiz3" name="PrelimQuiz3" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimLab1">Lab Activity 1:</label>
-            <input type="number" id="PrelimLab1" name="PrelimLab1" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimLab2">Lab Activity 2:</label>
-            <input type="number" id="PrelimLab2" name="PrelimLab2" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimLab3">Lab Activity 3:</label>
-            <input type="number" id="PrelimLab3" name="PrelimLab3" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimAssign1">Assignment 1:</label>
-            <input type="number" id="PrelimAssign1" name="PrelimAssign1" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimAssign2">Assignment 2:</label>
-            <input type="number" id="PrelimAssign2" name="PrelimAssign2" min="0" max="100">
-        </div>
-        <div class="input-group">
-            <label for="PrelimExam">Prelim Exam:</label>
-            <input type="number" id="PrelimExam" name="PrelimExam" min="0" max="100">
-        </div>
+      </div>
 
-        <button onclick="calculatePrelimGrade()">Compute Prelim Grade</button>
-        
-        <!-- Error/Message Box -->
-        <div id="messageBox" class="message-box"></div>
+      <script>
+        function calculatePrelimGrade() {
+          const messageBox = document.getElementById("messageBox");
+          messageBox.textContent = ""; // Clear any previous error messages
 
-        <!-- Result section with both Class Standing and Final Prelim Grade -->
-        <div class="result-group">
-            <h3>Calculated Grades</h3>
-            <div class="result-display">
-                <div>
-                    <label for="ClassStandingResult">Your Class Standing (CS) is:</label>
-                    <input type="text" id="ClassStandingResult" readonly>
-                </div>
-                <div>
-                    <label for="PrelimResult" class="prelim-grade-label">Your Final Prelim Grade (PG) is:</label>
-                    <input type="text" id="PrelimResult" readonly class="prelim-grade-result">
-                </div>
-            </div>
-        </div>
-
-        <script>
-            function calculatePrelimGrade() {
-                const messageBox = document.getElementById('messageBox');
-                messageBox.textContent = ''; // Clear any previous error messages
-
-                // Function to get a number from an input field, returning null if invalid
-                const getNumber = (id) => {
-                    const value = document.getElementById(id).value;
-                    if (value === '' || isNaN(parseFloat(value))) {
-                        return null;
-                    }
-                    return parseFloat(value);
-                };
-
-                // Helper function to calculate Class Standing for a given set of scores
-                const calculateClassStanding = (prefix) => {
-                    const quiz1 = getNumber(prefix + 'Quiz1');
-                    const quiz2 = getNumber(prefix + 'Quiz2');
-                    const quiz3 = getNumber(prefix + 'Quiz3');
-                    const lab1 = getNumber(prefix + 'Lab1');
-                    const lab2 = getNumber(prefix + 'Lab2');
-                    const lab3 = getNumber(prefix + 'Lab3');
-                    const assign1 = getNumber(prefix + 'Assign1');
-                    const assign2 = getNumber(prefix + 'Assign2');
-                    
-                    const inputs = [quiz1, quiz2, quiz3, lab1, lab2, lab3, assign1, assign2];
-                    
-                    if (inputs.some(val => val === null)) {
-                        return null;
-                    }
-
-                    const quizAverage = (quiz1 + quiz2 + quiz3) / 3;
-                    const labAverage = (lab1 + lab2 + lab3) / 3;
-                    const assignAverage = (assign1 + assign2) / 2;
-
-                    return (0.60 * quizAverage) + (0.20 * assignAverage) + (0.20 * labAverage);
-                };
-
-                // Helper function to calculate a Period Grade (PG or TMG)
-                const calculatePeriodGrade = (cs, examId) => {
-                    const examScore = getNumber(examId);
-                    if (cs === null || examScore === null) {
-                        return null;
-                    }
-                    return (0.50 * cs) + (0.50 * examScore);
-                };
-                
-                // Get the required inputs
-                const prelimCS = calculateClassStanding('Prelim');
-                const prelimExam = getNumber('PrelimExam');
-
-                // Check for invalid inputs from any field
-                const allInputsValid = prelimCS !== null && prelimExam !== null;
-                
-                if (!allInputsValid) {
-                    messageBox.textContent = 'Please ensure all fields contain valid numbers.';
-                    document.getElementById('PrelimResult').value = 'Error';
-                    document.getElementById('ClassStandingResult').value = 'Error';
-                    return;
-                }
-
-                // Step 1: Calculate the Class Standing
-                const classStanding = calculateClassStanding('Prelim');
-                document.getElementById('ClassStandingResult').value = classStanding.toFixed(2);
-
-                // Step 2: Calculate the final Prelim Grade (PG)
-                const prelimGrade = calculatePeriodGrade(classStanding, 'PrelimExam');
-                document.getElementById('PrelimResult').value = prelimGrade.toFixed(2);
+          // Function to get a number from an input field, returning null if invalid
+          const getNumber = (id) => {
+            const value = document.getElementById(id).value;
+            if (value === "" || isNaN(parseFloat(value))) {
+              return null;
             }
-        </script>
+            return parseFloat(value);
+          };
+
+          // Helper function to calculate Class Standing for a given set of scores
+          const calculateClassStanding = (prefix) => {
+            const quiz1 = getNumber(prefix + "Quiz1");
+            const quiz2 = getNumber(prefix + "Quiz2");
+            const quiz3 = getNumber(prefix + "Quiz3");
+            const lab1 = getNumber(prefix + "Lab1");
+            const lab2 = getNumber(prefix + "Lab2");
+            const lab3 = getNumber(prefix + "Lab3");
+            const assign1 = getNumber(prefix + "Assign1");
+            const assign2 = getNumber(prefix + "Assign2");
+
+            const inputs = [
+              quiz1,
+              quiz2,
+              quiz3,
+              lab1,
+              lab2,
+              lab3,
+              assign1,
+              assign2,
+            ];
+
+            if (inputs.some((val) => val === null)) {
+              return null;
+            }
+
+            const quizAverage = (quiz1 + quiz2 + quiz3) / 3;
+            const labAverage = (lab1 + lab2 + lab3) / 3;
+            const assignAverage = (assign1 + assign2) / 2;
+
+            return 0.6 * quizAverage + 0.2 * assignAverage + 0.2 * labAverage;
+          };
+
+          // Helper function to calculate a Period Grade (PG or TMG)
+          const calculatePeriodGrade = (cs, examId) => {
+            const examScore = getNumber(examId);
+            if (cs === null || examScore === null) {
+              return null;
+            }
+            return 0.5 * cs + 0.5 * examScore;
+          };
+
+          // Get the required inputs
+          const prelimCS = calculateClassStanding("Prelim");
+          const prelimExam = getNumber("PrelimExam");
+
+          // Check for invalid inputs from any field
+          const allInputsValid = prelimCS !== null && prelimExam !== null;
+
+          if (!allInputsValid) {
+            messageBox.textContent =
+              "Please ensure all fields contain valid numbers.";
+            document.getElementById("PrelimResult").value = "Error";
+            document.getElementById("ClassStandingResult").value = "Error";
+            return;
+          }
+
+          // Step 1: Calculate the Class Standing
+          const classStanding = calculateClassStanding("Prelim");
+          document.getElementById("ClassStandingResult").value =
+            classStanding.toFixed(2);
+
+          // Step 2: Calculate the final Prelim Grade (PG)
+          const prelimGrade = calculatePeriodGrade(classStanding, "PrelimExam");
+          document.getElementById("PrelimResult").value =
+            prelimGrade.toFixed(2);
+        }
+      </script>
     </div>
-</body>
+  </body>
 </html>

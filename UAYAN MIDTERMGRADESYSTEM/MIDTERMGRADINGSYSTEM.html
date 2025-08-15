@@ -1,208 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Midterm Grade Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f8f8f8;
-      margin: 0;
-      padding: 20px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <title>Midterm Grade Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
 
-    .container {
-      max-width: 400px;
-      margin: auto;
-      background: #ccc0d1;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
+      .container {
+        width: 400px;
+        margin: auto;
+        background: #ccc0d1;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+      }
 
-    .input-group {
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+      .input-group {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
 
-    label {
-      font-size: 0.9rem;
-      color: #555;
-      flex: 1;
-      margin-right: 10px;
-      white-space: nowrap;
-    }
+      label {
+        font-size: 0.9rem;
+        color: #555;
+        flex: 1;
+        margin-right: 10px;
+        white-space: nowrap;
+      }
 
-    input[type="number"] {
-      width: 100px;
-      padding: 6px 8px;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      -moz-appearance: textfield;
-    }
+      input[type="number"] {
+        width: 100px;
+        padding: 6px 8px;
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        -moz-appearance: textfield;
+      }
 
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
-    }
+      input[type="number"]::-webkit-inner-spin-button,
+      input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
 
-    button {
-      width: 100%;
-      padding: 10px;
-      background: #caacd8;
-      border: none;
-      color: rgb(245, 245, 245);
-      font-size: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: background-color 0.3s ease;
-    }
+      button {
+        width: 100%;
+        padding: 10px;
+        background: #caacd8;
+        border: none;
+        color: rgb(245, 245, 245);
+        font-size: 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 15px;
+        transition: background-color 0.3s ease;
+      }
 
-    button:hover {
-      background: #7d63a9;
-    }
+      button:hover {
+        background: #7d63a9;
+      }
 
-    .result {
-      margin-top: 20px;
-      text-align: center;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #2c3e50;
-    }
+      .result {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+      }
 
-    .message-box {
-      color: rgb(153, 108, 108);
-      text-align: center;
-      font-size: 0.9rem;
-    }
-  </style>
-</head>
-<body>
+      .message-box {
+        color: rgb(153, 108, 108);
+        text-align: center;
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Midterm Grade Calculator</h2>
 
-<div class="container">
-  <h2>Midterm Grade Calculator</h2>
+      <div class="input-group">
+        <label for="PrelimGrade">Prelim Grade (PG)</label>
+        <input type="number" id="PrelimGrade" />
+      </div>
 
-  <div class="input-group">
-    <label for="PrelimGrade">Prelim Grade (PG)</label>
-    <input type="number" id="PrelimGrade" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermQuiz1">Quiz 1</label>
+        <input type="number" id="MidtermQuiz1" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermQuiz1">Quiz 1</label>
-    <input type="number" id="MidtermQuiz1" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermQuiz2">Quiz 2</label>
+        <input type="number" id="MidtermQuiz2" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermQuiz2">Quiz 2</label>
-    <input type="number" id="MidtermQuiz2" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermQuiz3">Quiz 3</label>
+        <input type="number" id="MidtermQuiz3" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermQuiz3">Quiz 3</label>
-    <input type="number" id="MidtermQuiz3" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermAssign1">Assignment 1</label>
+        <input type="number" id="MidtermAssign1" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermAssign1">Assignment 1</label>
-    <input type="number" id="MidtermAssign1" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermAssign2">Assignment 2</label>
+        <input type="number" id="MidtermAssign2" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermAssign2">Assignment 2</label>
-    <input type="number" id="MidtermAssign2" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermLab1">Lab Activity 1</label>
+        <input type="number" id="MidtermLab1" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermLab1">Lab Activity 1</label>
-    <input type="number" id="MidtermLab1" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermLab2">Lab Activity 2</label>
+        <input type="number" id="MidtermLab2" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermLab2">Lab Activity 2</label>
-    <input type="number" id="MidtermLab2" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermLab3">Lab Activity 3</label>
+        <input type="number" id="MidtermLab3" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermLab3">Lab Activity 3</label>
-    <input type="number" id="MidtermLab3" />
-  </div>
+      <div class="input-group">
+        <label for="MidtermExam">Midterm Exam</label>
+        <input type="number" id="MidtermExam" />
+      </div>
 
-  <div class="input-group">
-    <label for="MidtermExam">Midterm Exam</label>
-    <input type="number" id="MidtermExam" />
-  </div>
+      <button onclick="calculateMidtermGrade()">Compute Midterm Grade</button>
+      <div class="message-box" id="messageBox"></div>
+      <div class="result" id="TermMidtermResult">Term Midterm Grade (TMG):</div>
+      <div class="result" id="MidtermResult">Final Midterm Grade (MG):</div>
+    </div>
 
-  <button onclick="calculateMidtermGrade()">Compute Midterm Grade</button>
-  <div class="message-box" id="messageBox"></div>
-  <div class="result" id="TermMidtermResult">Term Midterm Grade (TMG): </div>
-  <div class="result" id="MidtermResult">Final Midterm Grade (MG): </div>
-</div>
+    <script>
+      function calculateMidtermGrade() {
+        const messageBox = document.getElementById("messageBox");
+        messageBox.textContent = "";
 
-<script>
-  function calculateMidtermGrade() {
-    const messageBox = document.getElementById('messageBox');
-    messageBox.textContent = '';
+        const getNumber = (id) => {
+          const value = document.getElementById(id).value;
+          return value === "" || isNaN(parseFloat(value))
+            ? null
+            : parseFloat(value);
+        };
 
-    const getNumber = (id) => {
-      const value = document.getElementById(id).value;
-      return value === '' || isNaN(parseFloat(value)) ? null : parseFloat(value);
-    };
+        const calculateClassStanding = () => {
+          const quiz1 = getNumber("MidtermQuiz1");
+          const quiz2 = getNumber("MidtermQuiz2");
+          const quiz3 = getNumber("MidtermQuiz3");
+          const lab1 = getNumber("MidtermLab1");
+          const lab2 = getNumber("MidtermLab2");
+          const lab3 = getNumber("MidtermLab3");
+          const assign1 = getNumber("MidtermAssign1");
+          const assign2 = getNumber("MidtermAssign2");
 
-    const calculateClassStanding = () => {
-      const quiz1 = getNumber('MidtermQuiz1');
-      const quiz2 = getNumber('MidtermQuiz2');
-      const quiz3 = getNumber('MidtermQuiz3');
-      const lab1 = getNumber('MidtermLab1');
-      const lab2 = getNumber('MidtermLab2');
-      const lab3 = getNumber('MidtermLab3');
-      const assign1 = getNumber('MidtermAssign1');
-      const assign2 = getNumber('MidtermAssign2');
+          const inputs = [
+            quiz1,
+            quiz2,
+            quiz3,
+            lab1,
+            lab2,
+            lab3,
+            assign1,
+            assign2,
+          ];
+          if (inputs.some((val) => val === null)) return null;
 
-      const inputs = [quiz1, quiz2, quiz3, lab1, lab2, lab3, assign1, assign2];
-      if (inputs.some(val => val === null)) return null;
+          const quizAvg = (quiz1 + quiz2 + quiz3) / 3;
+          const labAvg = (lab1 + lab2 + lab3) / 3;
+          const assignAvg = (assign1 + assign2) / 2;
 
-      const quizAvg = (quiz1 + quiz2 + quiz3) / 3;
-      const labAvg = (lab1 + lab2 + lab3) / 3;
-      const assignAvg = (assign1 + assign2) / 2;
+          return 0.6 * quizAvg + 0.2 * assignAvg + 0.2 * labAvg;
+        };
 
-      return (0.60 * quizAvg) + (0.20 * assignAvg) + (0.20 * labAvg);
-    };
+        const calculatePeriodGrade = (cs, examId) => {
+          const examScore = getNumber(examId);
+          return cs === null || examScore === null
+            ? null
+            : 0.5 * cs + 0.5 * examScore;
+        };
 
-    const calculatePeriodGrade = (cs, examId) => {
-      const examScore = getNumber(examId);
-      return (cs === null || examScore === null) ? null : (0.50 * cs + 0.50 * examScore);
-    };
+        const prelimGrade = getNumber("PrelimGrade");
+        const midtermCS = calculateClassStanding();
+        const midtermExam = getNumber("MidtermExam");
 
-    const prelimGrade = getNumber('PrelimGrade');
-    const midtermCS = calculateClassStanding();
-    const midtermExam = getNumber('MidtermExam');
+        const allInputsValid =
+          prelimGrade !== null && midtermCS !== null && midtermExam !== null;
+        if (!allInputsValid) {
+          messageBox.textContent =
+            "Please fill in all fields with valid numbers.";
+          document.getElementById("TermMidtermResult").textContent =
+            "Term Midterm Grade (TMG): --";
+          document.getElementById("MidtermResult").textContent =
+            "Final Midterm Grade (MG): --";
+          return;
+        }
 
-    const allInputsValid = prelimGrade !== null && midtermCS !== null && midtermExam !== null;
-    if (!allInputsValid) {
-      messageBox.textContent = 'Please fill in all fields with valid numbers.';
-      document.getElementById('TermMidtermResult').textContent = "Term Midterm Grade (TMG): --";
-      document.getElementById('MidtermResult').textContent = "Final Midterm Grade (MG): --";
-      return;
-    }
+        const TMG = calculatePeriodGrade(midtermCS, "MidtermExam");
+        const MG = (1 / 3) * prelimGrade + (2 / 3) * TMG;
 
-    const TMG = calculatePeriodGrade(midtermCS, 'MidtermExam');
-    const MG = (1 / 3 * prelimGrade) + (2 / 3 * TMG);
-
-    document.getElementById('TermMidtermResult').textContent = `Term Midterm Grade (TMG): ${TMG.toFixed(2)}`;
-    document.getElementById('MidtermResult').textContent = `Final Midterm Grade (MG): ${MG.toFixed(2)}`;
-  }
-</script>
-
-</body>
+        document.getElementById(
+          "TermMidtermResult"
+        ).textContent = `Term Midterm Grade (TMG): ${TMG.toFixed(2)}`;
+        document.getElementById(
+          "MidtermResult"
+        ).textContent = `Final Midterm Grade (MG): ${MG.toFixed(2)}`;
+      }
+    </script>
+  </body>
 </html>
