@@ -4,11 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
-    <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/b8623ad47f.js"
       crossorigin="anonymous"
     ></script>
+    <style>
+      @font-face {
+        font-family: "digital-7";
+        src: url(fonts/digital-7.ttf);
+        font-style: normal;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .calc {
+        background: #ffb54d;
+      }
+
+      .calc:hover {
+        background-color: #ffb54d;
+      }
+
+      #calculator {
+        background-color: black;
+        max-width: 350px;
+        padding: 20px;
+        width: 100%;
+        border-radius: 15px;
+      }
+
+      .clear {
+        color: #ffb54d;
+      }
+
+      .del {
+        color: #ffb54d;
+      }
+
+      #display {
+        width: 100%;
+        height: 90px;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 45px;
+        text-align: right;
+        border: none;
+        border-radius: 10px;
+        background-color: #a0a474;
+        color: white;
+        box-sizing: border-box;
+        font-family: "digital-7";
+      }
+
+      #Key {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+      }
+
+      button {
+        padding: 20px;
+        border-radius: 10px;
+        border: none;
+        background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+        box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+          inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+          10px 20px 25px rgba(0, 0, 0, 0.4);
+        color: white;
+        font-size: 25px;
+        font-style: normal;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: grey;
+      }
+
+      button:active {
+        background-color: grey;
+      }
+    </style>
   </head>
   <body>
     <div id="calculator">
@@ -39,6 +121,33 @@
       </div>
     </div>
 
-    <script src="index.js"></script>
+    <script>
+      // Calculator js
+
+      const display = document.getElementById("display");
+
+      function appendToDisplay(input) {
+        display.value += input;
+      }
+
+      function clearDisplay() {
+        display.value = "";
+      }
+
+      function deleteWords() {
+        let string = display.value;
+        display.value = string.substr(0, string.length - 1);
+      }
+
+      function calculate() {
+        try {
+          let input = display.value.replace(/\^/g, "**");
+          input = input.replace(/(\d+(\.\d+)?)%/g, "($1/100)");
+          display.value = eval(input);
+        } catch (error) {
+          display.value = "Error";
+        }
+      }
+    </script>
   </body>
 </html>
