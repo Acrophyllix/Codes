@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Midterm Grade Calculator</title>
     <style>
       body {
@@ -184,21 +185,22 @@
       </div>
 
       <button onclick="calculateMidtermGrade()">Compute Midterm Grade</button>
+      <div class="message-box" id="messageBox"></div>
 
       <div class="result-group">
         <h3>Calculated Grades</h3>
         <div class="result-display">
           <div>
-            <label for="ClassStandingResult">Term Midterm Grade (TMG):</label>
-            <input type="text" id="ClassStandingResult" readonly />
+            <label for="TermMidtermResult">Term Midterm Grade (TMG):</label>
+            <input type="text" id="TermMidtermResult" readonly />
           </div>
           <div>
-            <label for="PrelimResult" class="prelim-grade-label"
+            <label for="MidtermResult" class="prelim-grade-label"
               >Midterm Grade (MG):</label
             >
             <input
               type="text"
-              id="PrelimResult"
+              id="MidtermResult"
               readonly
               class="prelim-grade-result"
             />
@@ -264,10 +266,8 @@
         if (!allInputsValid) {
           messageBox.textContent =
             "Please fill in all fields with valid numbers.";
-          document.getElementById("TermMidtermResult").textContent =
-            "Term Midterm Grade (TMG): --";
-          document.getElementById("MidtermResult").textContent =
-            "Final Midterm Grade (MG): --";
+          document.getElementById("TermMidtermResult").value = "Error";
+          document.getElementById("MidtermResult").value = "Error";
           return;
         }
 
@@ -276,10 +276,10 @@
 
         document.getElementById(
           "TermMidtermResult"
-        ).textContent = `Term Midterm Grade (TMG): ${TMG.toFixed(2)}`;
+        ).value = TMG.toFixed(2);
         document.getElementById(
           "MidtermResult"
-        ).textContent = `Final Midterm Grade (MG): ${MG.toFixed(2)}`;
+        ).value = MG.toFixed(2);
       }
     </script>
   </body>
