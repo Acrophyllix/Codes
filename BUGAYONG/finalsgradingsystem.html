@@ -91,6 +91,44 @@
         text-align: center;
         font-size: 0.9rem;
       }
+
+
+        .result-group {
+        margin-top: 20px;
+        text-align: center;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e0e0e0;
+      }
+
+      .result-group h3 {
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      .result-display {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .result-display input {
+        display: block;
+        margin: 0 auto;
+        width: 150px;
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #2c3e50;
+        background-color: #eff6ff;
+        border: 3px solid #cbc3e3;
+        border-radius: 8px;
+        padding: 0.75rem;
+      }
+
+      .result-display label {
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
@@ -153,9 +191,23 @@
       </div>
 
       <button onclick="computeFinalGrade()">Compute Final Grade</button>
-      <div class="message-box" id="message"></div>
-      <div class="result" id="result">Final Grade:</div>
-    </div>
+      
+       <div class="result-group">
+        <h3>Calculated Grades</h3>
+        <div class="result-display">
+          <div>
+            <label for="PrelimResult" class="prelim-grade-label"
+              >Final Grade (FG) is:</label
+            >
+            <input
+              type="text"
+              id="PrelimResult"
+              readonly
+              class="prelim-grade-result"
+            />
+          </div>
+        </div>
+      </div>
 
     <script>
       function computeFinalGrade() {
