@@ -6,10 +6,10 @@
     <title>Midterm Grade Calculator</title>
 
     <style>
-        /* General body and container styling */
+        /* body and container */
         body {
             font-family: Arial, sans-serif;
-            background-color: #eef2f6; /* Light, calming background */
+            background-color: #eef2f6; /* background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,7 +25,7 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 800px;
+            max-width: 600px; /* Adjusted max width for single column */
         }
 
         h1 {
@@ -207,20 +207,18 @@
         <h1>Midterm Grade Calculator</h1>
         <p class="subtitle">Calculates your midterm grade based on your prelim and midterm scores.</p>
         
-        <!-- Input section for Prelim Grade and Midterm scores -->
+        <!-- Combined input section for Prelim and Midterm scores -->
         <div class="input-section">
-            <!-- Prelim Grade Input -->
             <div class="input-group-container">
-                <h2>Prelim Grade</h2>
+                <h2>Midterm Grade</h2>
+                
+                <!-- Prelim Grade Input -->
                 <div class="input-group">
                     <label for="PrelimGrade">Enter your Prelim Grade (PG):</label>
                     <input type="number" id="PrelimGrade" name="PrelimGrade" min="0" max="100">
                 </div>
-            </div>
 
-            <!-- Midterm Grade Inputs -->
-            <div class="input-group-container">
-                <h2>Term Midterm Scores (TMG)</h2>
+                <!-- Midterm Grade Input -->
                 <div class="input-group">
                     <label for="MidtermQuiz1">Quiz 1:</label>
                     <input type="number" id="MidtermQuiz1" name="MidtermQuiz1" min="0" max="100">
